@@ -12,17 +12,6 @@ El proyecto incluye:
 
 ---
 
-## 📂 Estructura del repositorio
-
-├── Amazon Sale Report.csv # Dataset original
-├── EDA_Amazon_Sales_ENHANCED.ipynb # Notebook con el EDA completo
-├── Amazon_Sale_Report_CLEAN.csv # Dataset limpio (separador ; , coma decimal)
-├── Amazon_Sale_Report_CLEAN_TABLEAU.tsv # Dataset limpio en TSV (para Tableau)
-└── README.md # Este archivo
-
-
----
-
 ## 🚀 Flujo de trabajo
 
 1. **Carga y vista inicial**
