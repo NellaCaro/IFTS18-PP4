@@ -6,6 +6,7 @@
     <AccessibleZoneTabOrder />
     <AnimationOnByDefault />
     <AutoCreateAndUpdateDSDPhoneLayouts />
+    <DashboardGridOverlay />
     <IntuitiveSorting />
     <IntuitiveSorting_SP2 />
     <MarkAnimation />
@@ -1254,7 +1255,7 @@
     </dashboard>
   </dashboards>
   <windows source-height='30'>
-    <window class='worksheet' name='Pedidos por estado'>
+    <window class='worksheet' maximized='true' name='Pedidos por estado'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1330,10 +1331,11 @@
           <zoom type='fit-width' />
         </viewpoint>
       </viewpoints>
-      <active id='4' />
+      <active id='-1' />
+      <grid grid-overlay-mode='on' />
       <simple-id uuid='{22A23C1E-53A2-47DC-A9E1-E461CE401DED}' />
     </window>
-    <window class='worksheet' maximized='true' name='Top ciudades con más ventas'>
+    <window class='worksheet' name='Top ciudades con más ventas'>
       <cards>
         <edge name='left'>
           <strip size='160'>
