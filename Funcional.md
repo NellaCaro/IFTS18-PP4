@@ -23,7 +23,7 @@ Intenta utf-8→latin-1→cp1252, low_memory=False, manejo explícito de errores
 ## Normalización & limpieza básica: 
 snake_case; elimina columnas totalmente nulas y duplicados exactos; sanea strings (espacios, "nan" textual → NaN).
 
-## Tiempopificación (números & fechas): 
+## Tipificación (números & fechas): 
 Heurística >70% para detectar numéricas y convertir con to_number. Date-safe parsing solo en columnas que son fechas (según DATE_COL_PRIORITY y DATEFIRST), sin tocar IDs.
 
 # Features retail
