@@ -26,8 +26,3 @@ Notebook modular para limpiar un dataset de ventas, crear features analíticas y
 - **Fechas seguras**: solo columnas que lo son (evita romper IDs).  
 - **Revenue fiel**: devoluciones/cancelaciones se mantienen (negativos o bucket).  
 - **Tableau-ready**: `aov_by_order` disponible por línea para evitar LODs.
-
-## Validación mínima
-- Serie `order_month` debe verse razonable.  
-- `status_bucket` sin exceso de `unknown`.  
-- `gross_revenue` suma coherente frente a reportes de referencia.
