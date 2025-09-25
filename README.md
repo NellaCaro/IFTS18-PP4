@@ -1,83 +1,33 @@
-# 📊 EDA – Amazon Sale Report
+# Retail EDA & Cleaning
 
-Este repositorio contiene el trabajo práctico de **Análisis Exploratorio de Datos (EDA)** realizado sobre el dataset **Amazon Sale Report**.
+Notebook modular para limpiar un dataset de ventas, crear features analíticas y exportar un CSV listo para Tableau.
 
-El proyecto incluye:
-- Limpieza y preprocesamiento del dataset.
-- Auditoría de calidad de datos.
-- Desarrollo de nuevas variables.
-- Estadísticas descriptivas y análisis de outliers.
-- Extracción de insights iniciales.
-- Export de dataset limpio para visualización en **Tableau**.
+## Estructura del pipeline (módulos 1–9)
+1. Parámetros & Paths  
+2. Setup (imports + helpers)  
+3. Carga de datos (robusta, múltiples encodings)  
+4. Normalización & limpieza básica (snake_case, duplicados, strings)  
+5. Tipificación (números & fechas, date-safe parsing)  
+6. Features retail (status_bucket, gross_revenue, tiempo, flags, AOV)  
+7. Calidad de datos & reglas (inconsistencias y `is_negative_revenue`)  
+8. Estadísticas & gráficos (sanity + tendencias + Top-N)  
+9. Export para Tableau (`amazon_cleaned_for_tableau.csv`)
 
----
+## Requisitos
+- Python 3.9+  
+- `pandas`, `numpy`, `matplotlib`
 
-## 🚀 Flujo de trabajo
+## Uso rápido
+1. Copiá `Amazon Sale Report.csv` junto al notebook.  
+2. Abrí `Retail_EDA_Cleaning.ipynb` y ejecutá las celdas en orden.  
+3. Encontrarás el resultado en `amazon_cleaned_for_tableau.csv`.
 
-1. **Carga y vista inicial**
-   - Exploración del dataset original.
-   - Revisión de estructura, columnas y tipos de datos.
+## Decisiones de diseño
+- **Fechas seguras**: solo columnas que lo son (evita romper IDs).  
+- **Revenue fiel**: devoluciones/cancelaciones se mantienen (negativos o bucket).  
+- **Tableau-ready**: `aov_by_order` disponible por línea para evitar LODs.
 
-2. **Limpieza y preprocesamiento**
-   - Estandarización de nombres de columnas.
-   - Conversión de tipos (`Date`, `Qty`, `Amount`, `ship-postal-code`).
-   - Normalización de `ship-city`, `ship-state`, `ship-country`.
-   - Eliminación de duplicados.
-
-3. **Auditoría de calidad**
-   - Conteo de nulos.
-   - Fechas inválidas.
-   - Reglas de consistencia (ej. `Qty <= 0`, `Amount < 0`).
-   - Revisión de categorías (`Status`, `Courier Status`, `currency`).
-
-4. **Desarrollo de nuevas variables**
-   - Variables temporales: `Year_num`, `Month_str`, `Day_num`, `Dow`.
-   - Indicadores: `UnitPrice_est`, `Order_Status_Bucket`, `Sales_Channel_Bucket`.
-   - Flags: `Amount_is_null`, `*_is_outlier`.
-
-5. **Outliers y reglas de negocio**
-   - Método IQR para `Amount` y `UnitPrice_est`.
-   - Reglas de coherencia (cantidad cero con monto positivo, etc.).
-
-6. **Estadísticas descriptivas**
-   - Medidas básicas (`describe`).
-   - Distribuciones categóricas (top categorías, estados, ciudades).
-   - KPIs: ingresos totales, ticket promedio, % de pedidos exitosos.
-
-7. **Insights preliminares**
-   - Categoría y ciudad top por ingresos.
-   - Evolución mensual (crecimiento y mes pico).
-   - % de cancelaciones.
-   - Registros outliers detectados.
-
-8. **Export**
-   - Dataset limpio en formatos **CSV** y **TSV** para análisis posterior en Tableau.
-
----
-
-## 📈 Visualización en Tableau
-
-El análisis visual se complementa en Tableau (no incluido en este repo), donde se desarrollan dashboards como:
-- **Top 10 ciudades por ventas.**
-- **Ventas por categoría.**
-- **Tendencia mensual de ingresos.**
-- **Distribución de pedidos exitosos vs cancelados.**
-
----
-
-## 🧾 Recomendaciones y decisiones tomadas
-
-- Conservar registros con nulos en `Amount`, pero añadir flag para filtrar en BI.
-- Normalizar ubicaciones para evitar duplicados por diferencias de escritura.
-- No eliminar outliers automáticamente: se marcan para revisión.
-- Agregar variables derivadas para enriquecer el análisis descriptivo.
-- Exportar datasets en formatos compatibles tanto con Python como con Tableau.
-
----
-
-## 🛠️ Tecnologías utilizadas
-
-- **Python** (pandas, numpy, re)
-- **Jupyter Notebook**
-- **Tableau** (visualización)
-- **GitHub** (control de versiones y presentación)
+## Validación mínima
+- Serie `order_month` debe verse razonable.  
+- `status_bucket` sin exceso de `unknown`.  
+- `gross_revenue` suma coherente frente a reportes de referencia.
