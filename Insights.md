@@ -1,4 +1,4 @@
-# Insights & Hallazgos — Retail (generado 2025-09-25 01:06)
+# Insights & Hallazgos
 
 ## Snapshot de métricas clave
 
